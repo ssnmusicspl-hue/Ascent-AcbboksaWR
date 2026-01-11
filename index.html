@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascent Acbooks INC | Secure Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff4500;
+            --secondary: #00eaff;
+            --dark: #121212;
+            --light: #ffffff;
+            --success: #2ecc71;
+        }
+
+        /* Security Overlay */
+        #lock-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--dark);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body { font-family: 'Arial', sans-serif; background-color: var(--dark); color: var(--light); margin: 0; text-align: center; }
+        h1, h2, h3, .buy-btn, .price-tag, .lock-text { font-family: 'Pacifico', cursive; }
+
+        header { background: #000; padding: 50px 20px; border-bottom: 5px solid var(--primary); }
+        .container { max-width: 900px; margin: auto; padding: 20px; }
+        
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        
+        .book-card { background: #1e1e1e; border: 3px solid #333; border-radius: 25px; padding: 25px; transition: 0.3s ease; }
+        .price-tag { font-size: 2.2rem; color: var(--success); display: block; margin: 10px 0; }
+
+        .buy-btn { background: var(--primary); color: white; padding: 12px 30px; text-decoration: none; border-radius: 50px; font-size: 1.4rem; cursor: pointer; border: none; }
+        
+        input[type="password"] {
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid var(--secondary);
+            background: #222;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .secure-badge { color: var(--secondary); font-size: 0.8rem; margin-top: 20px; }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <div id="lock-screen">
+    <h2 class="lock-text" style="color: var(--primary);">Ascent Security</h2>
+    <p>Enter the Secret Code to Enter the Shop</p>
+    <input type="password" id="pass" placeholder="Enter PIN">
+    <button class="buy-btn" onclick="checkPass()">Unlock</button>
+    <p id="error" style="color: red; display: none; margin-top: 10px;">Wrong Code, Brah!</p>
+</div>
+
+<header>
+    <h1 style="margin:0; font-size: 3.5rem; color: var(--primary);">Ascent Acbooks</h1>
+    <p style="font-family: 'Pacifico'; color: var(--secondary);">Secure Official Store 🇮🇳</p>
+</header>
+
+<div class="container">
+    <div class="shop-grid">
+        <div class="book-card">
+            <h2>Tarnisher Destroyers</h2>
+            <span class="price-tag">₹150</span>
+            <a href="#" class="buy-btn">Order Now</a>
+        </div>
+
+        <div class="book-card" style="border-color: var(--secondary);">
+            <h2>Death Killers</h2>
+            <span class="price-tag">₹200</span>
+            <a href="#" class="buy-btn" style="background: var(--secondary); color: black;">Pre-Order</a>
+        </div>
+    </div>
+    <p class="secure-badge">🔒 Encrypted DIY Connection</p>
+</div>
+
+<script>
+    // THE SECRET CODE IS: 1234 (You can change this below!)
+    function checkPass() {
+        var p = document.getElementById("pass").value;
+        if(p == "1234") {
+            document.getElementById("lock-screen").style.display = "none";
+        } else {
+            document.getElementById("error").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
